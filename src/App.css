@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+.profile-pic{
+  height: 450px;
+  width: 450px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.profile-pic:hover{
+  transform: scale(1.1);
+}
