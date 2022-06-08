@@ -48,3 +48,10 @@
   gap: 10px;
   justify-content: space-around;
 }
+
+.add-movie-form{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  padding: 24px;
+}
