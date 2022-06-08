@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-export function Movie({ movie }) {
+export function Movie({ movie,id }) {
   const Style = {
     color: movie.rating > 8 ? "green" : "red"
   };
@@ -20,11 +20,12 @@ export function Movie({ movie }) {
       </div>
 
       <button onClick={() => setShow(!show)}>Toggle Button</button>
-      {/* Hook + conditional logic */}
-      {/* <p  style={paraStyle} className="movie-summary">{movie.summary}</p> */}
       <button onClick={() => navigate(`/movies/${id}`)}>Info</button>
 
+     {/* Hook + conditional logic */}
+      {/* <p  style={paraStyle} className="movie-summary">{movie.summary}</p> */}
       {/* conditional Rendering */}
+     
       {show ? <p className="movie-summary">{movie.summary}</p> : null}
 
     </div>

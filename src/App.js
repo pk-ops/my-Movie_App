@@ -2,8 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
 import { Movie } from './Movie';
-import { Navigate, useNavigate,Route,Routes,useParams } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import {AddColor} from './addColor'
+import { Routes, Route, Link ,Navigate} from "react-router-dom";
 
 function App() {
   //js starts
@@ -119,37 +121,60 @@ function App() {
 
     {/* < MovieList movieList={movieList} setMovieList={setMovieList} /> */}
 
-
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/color-game">Color Game</Link>
+        </li>
+        <li>
+          <Link to="/movies">Movies</Link>
+        </li>
+      </ul>
+    </nav>
     
-    <h1>Welcome to React Router!</h1>
+    {/* <h1>Welcome to React Router!</h1> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="/films" element={<Navigate replace to="movies" />} />
+        <Route path="/films" element={<Navigate replace to="/movies" />} />
+        
+        <Route path="/color-game" element={<AddColor/>}/>
+        
+        <Route path="/movies/:id" 
+        element={<MovieDetails movieList={movieList}/>}
+         />
+        
+        <Route path="/movies" element={
+          <MovieList movieList={movieList} setMovieList={setMovieList}/>
+        }/>
         <Route path="/404" element={<NotFound />} />
-        <Route path="/movies/:id" element={<MovieDetails movieList={movieList}/>} />
+        <Route path="*" element={<Navigate replace to='/NotFound' />} />
       </Routes>
       
-      <MovieList movieList={movieList} setMovieList={setMovieList}/>
+      {/* <MovieList movieList={movieList} setMovieList={setMovieList}/> */}
     </div>
+   
   );
   //JSX ends 
 }
-
-export default App;
+function Home(){
+  return(
+    <>
+<h1>Welcome to movie app😊✨✨</h1>
+    </>
+  )
+}
 
 function NotFound(){
   return(
     <div>
-      <img/>
+      <img src="https://webartdevelopers.com/blog/404-svg-animated-page-concept/" 
+      alt="404 not found"/>
+      
     </div>
-  )
-}
-
-function Home(){
-  return(
-    <>
-    </>
   )
 }
 
@@ -159,6 +184,9 @@ function About(){
     </>
   )
 }
+export default App;
+
+
 
 function MovieDetails({movieList}){
   const {id}=useParams();
@@ -195,6 +223,16 @@ function MovieList({movieList,setMovieList}){
   const [poster,setPoster]=useState("");
   const [rating,setRating]=useState("");
   const [summary,setSummary]=useState("");
+  const addMovie=()=>{
+    const newMovie={
+      name:name,
+      poster:poster,
+      rating:rating,
+      summary:summary,
+     };
+     setMovieList([...movieList,newMovie])
+     console.log(newMovie)};
+
   return(
     <div>
       <div  className='add-movie-form'>
@@ -211,22 +249,13 @@ function MovieList({movieList,setMovieList}){
         
         <input placeholder='Summmary'
         onChange={(event)=>setSummary(event.target.value)}/>
-
+{/* 
         <p>name:{name}</p>
         <p>poster:{poster}</p>
         <p>rating:{rating}</p>
-        <p>summary:{summary}</p>
+        <p>summary:{summary}</p> */}
        
-        <button onClick={()=>{
-          const newMovie={
-            name:name,
-            poster:poster,
-            rating:rating,
-            summary:summary,
-           };
-           setMovieList([...movieList,newMovie])
-           console.log(newMovie)}}
-       >
+        <button onClick={addMovie}>
           Add Movie
         </button>
         <Button variant="outlined">Outlined</Button>
