@@ -54,11 +54,8 @@
       </ul>
     </nav> */}
 
-    // function AddMovie({movieList,setMovieList}){
-  
-//   return(
-//     <>
-//     </>
-    
-//   )
-// }}
+ {/* 
+      <p>name:{name}</p>
+      <p>poster:{poster}</p>
+      <p>rating:{rating}</p>
+      <p>summary:{summary}</p> */}

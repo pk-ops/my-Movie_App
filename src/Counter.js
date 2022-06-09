@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Badge from '@mui/material/Badge';
-
+import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 
 
 
-export function Counter() {
+export function Counters() {
   const [like, setLike] = useState(0);
   const [dislike, setDislike]=useState(0);
   const incrementLike=()=>setLike(like+1);
@@ -27,7 +27,7 @@ export function Counter() {
            color=""
            onClick={incrementdislike}
            aria-label="Movie-details">
-              <Badge badgeContent={dislike} color="primary">
+              <Badge badgeContent={dislike} color="error">
               👎 
                 </Badge>     
       </IconButton>

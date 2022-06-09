@@ -1,9 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
-import { Movie } from './Movie';
 import * as React from 'react';
-import { useNavigate,useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import {AddColor} from './addColor'
 import { Routes, Route, Link ,Navigate} from "react-router-dom";
@@ -13,7 +12,11 @@ import AppBar from '@mui/material/AppBar';
 
 import Toolbar from '@mui/material/Toolbar';
 
-import TextField from '@mui/material/TextField';
+import { MovieList } from './MovieList';
+import { AddMovie } from './AddMovie';
+import { MovieDetails } from './MovieDetails';
+import { NotFound } from './NotFound';
+import { Home } from './Home';
 
 
 
@@ -98,62 +101,48 @@ function App() {
           <Button color="inherit" onClick={()=>navigate("/")}>Home</Button>
           <Button color="inherit"  onClick={()=>navigate("/color-game")}>Color Game</Button>
           <Button color="inherit" onClick={()=>navigate("/movies")}>Movies</Button>
+          <Button color="inherit" onClick={()=>navigate("/movies/add")}>Add Movie</Button>
         </Toolbar>
       </AppBar>
 
   
     
     {/* <h1>Welcome to React Router!</h1> */}
-      <Routes>
+        <section className='route-container'>
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="/films" element={<Navigate replace to="/movies" />} />
         
         <Route path="/color-game" element={<AddColor/>}/>
         
-        {/* <Route path="/movies/:id" 
+        <Route path="/movies/:id" 
         element={<MovieDetails movieList={movieList}/>}
-         /> */}
+         />
         
         <Route path="/movies" 
         element={
           <MovieList movieList={movieList} setMovieList={setMovieList}/>
         }/>
 
-        {/* <Route path="/" element={
-          <AddMovie movieList={movieList} setMovieList={setMovieList}/>
-        }/> */}
+        <Route path="/movies/add" 
+        element={<AddMovie movieList={movieList} setMovieList={setMovieList}/> }/>
 
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate replace to='/NotFound' />} />
       </Routes>
+        </section>
+      
       
       {/* <MovieList movieList={movieList} setMovieList={setMovieList}/> */}
 
-
+        
+      {/* <Counter/> */}
     </div>
    
   );
   //JSX ends 
 }
-function Home(){
-  return(
-    <>
-<h1>Welcome to movie app😊✨✨</h1>
-    </>
-  )
-}
-
-function NotFound(){
-  return(
-    <div>
-      <img src="https://webartdevelopers.com/blog/404-svg-animated-page-concept/" 
-      alt="404 not found"/>
-      
-    </div>
-  )
-}
-
 function About(){
   return(
     <>
@@ -163,85 +152,3 @@ function About(){
 export default App;
 
 
-
-function MovieDetails({movieList}){
-  const {id}=useParams();
-  console.log(id);
-  const movie=movieList[id];
-  const Style={
-    color:movie.rating>8?"green":"red",
-  }
-  const navigate=useNavigate();
-  return(
-    <div>
-      <iframe width="100%"
-       height="650" 
-       src={movie.trailer} 
-       title="YouTube video player" 
-       frameborder="0" 
-       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-       allowfullscreen>
-       </iframe>
-       <div className='movie-detail-container'>
-       <div className="movie-specs">
-        <h2 className="movie-name">{movie.name}</h2>
-        <p style={Style} className="movie-rating">🌟{movie.rating}</p>
-      </div>
-      <p className="movie-summary">{movie.summary}</p>
-      {/* <button onClick={()=>navigate(-1)}></button> */}
-      <Button onClick={()=>navigate(-1)} variant="outlined">Back</Button>
-    </div>
-    </div>
-  )
-}
-
-function MovieList({movieList,setMovieList}){
-  const [name,setName]=useState("");
-  const [poster,setPoster]=useState("");
-  const [rating,setRating]=useState("");
-  const [summary,setSummary]=useState("");
-  const addMovie=()=>{
-    const newMovie={
-      name:name,
-      poster:poster,
-      rating:rating,
-      summary:summary,
-     };
-     setMovieList([...movieList,newMovie])
-     console.log(newMovie);
-  return(
-    <>
-    <div  className='add-movie-form'>
-    <TextField  
-      onChange={(event)=>setName(event.target.value)}
-      label="Rating" variant="standard" />
-     
-    <TextField   
-      onChange={(event)=>setPoster(event.target.value)}
-      label="Rating" variant="standard" />
-
-    <TextField  
-      onChange={(event)=>setRating(event.target.value)}
-      label="Rating" variant="standard" />
-
-    <TextField  
-      onChange={(event)=>setSummary(event.target.value)} 
-      label="Summmary" variant="standard" />
-
-{/* 
-      <p>name:{name}</p>
-      <p>poster:{poster}</p>
-      <p>rating:{rating}</p>
-      <p>summary:{summary}</p> */}
-    
-      <Button onClick={addMovie} variant="outlined">Add Movie</Button>
-    </div>
-      <div className="movie-List"> 
-        {movieList.map((mv,index)=>
-        (<Movie key={index} movie={mv} id={index}/>)
-      )}
-       
-    </div>
-    </>
-  )
-}
