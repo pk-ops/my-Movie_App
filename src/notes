@@ -1,0 +1,64 @@
+ {/* <Message  pic="https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture-768x798.jpg"/> */}
+   
+   {/* [{
+      name:"Mayur",
+      pic:"https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture-768x798.jpg",
+      },
+      {
+        name:"Prathamesh",
+        pic:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vGNp0RJxy8o1b_KKaehr6kXf8zxQZugdQg&usqp=CAU"
+      },
+      {
+        name:"Aniket",
+        pic:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQnVF6kPOwLxFmwHuLQIn-_f6lLFACKWYdCw&usqp=CAU"
+      }
+] */}
+   
+   {/* MAP FUNCTION */}
+   {/* {  names.map((nm)=>(
+    <Welcome name={nm}/>
+    ))}
+
+    {name.map((ns)=>(
+      <Message name={ns.name} pic={ns.pic}/>
+    ))} */}
+
+
+   {/* <Counter/>  */}
+
+   {/* <Welcome name="abay"/> */}
+    {/* <div className="movie-List"> 
+    {movieList.map((nm)=>(<Movie movie={nm}/>)
+    )}
+    </div> */}
+    
+
+    {/* < MovieList movieList={movieList} setMovieList={setMovieList} /> */}
+
+    //js starts
+  
+  //js ends
+  //jsx starts
+      // <p>Time to complete - {4* time} mins</p>
+        {/* <nav>
+      <ul>
+        <li>
+          <Link to="/"></Link>
+        </li>
+        <li>
+          <Link to="/color-game"></Link>
+        </li>
+        <li>
+          <Link to="/movies"></Link>
+        </li>
+      </ul>
+    </nav> */}
+
+    // function AddMovie({movieList,setMovieList}){
+  
+//   return(
+//     <>
+//     </>
+    
+//   )
+// }}

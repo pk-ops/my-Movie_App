@@ -2,17 +2,23 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
 import { Movie } from './Movie';
+import * as React from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import {AddColor} from './addColor'
 import { Routes, Route, Link ,Navigate} from "react-router-dom";
 
+
+import AppBar from '@mui/material/AppBar';
+
+import Toolbar from '@mui/material/Toolbar';
+
+import TextField from '@mui/material/TextField';
+
+
+
 function App() {
-  //js starts
   
-  //js ends
-  //jsx starts
-      // <p>Time to complete - {4* time} mins</p>
      const names=["Mayur","Prathamesh","Aniket"]
      const INITIAL_MOVIE_LIST=[
     {
@@ -81,59 +87,21 @@ function App() {
       }
       ];
         const [movieList,setMovieList]=useState(INITIAL_MOVIE_LIST);
+        const navigate=useNavigate();
       return (
     <div className="App">
      
-    {/* <Message  pic="https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture-768x798.jpg"/> */}
-   
-   {/* [{
-      name:"Mayur",
-      pic:"https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture-768x798.jpg",
-      },
-      {
-        name:"Prathamesh",
-        pic:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vGNp0RJxy8o1b_KKaehr6kXf8zxQZugdQg&usqp=CAU"
-      },
-      {
-        name:"Aniket",
-        pic:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQnVF6kPOwLxFmwHuLQIn-_f6lLFACKWYdCw&usqp=CAU"
-      }
-] */}
-   
-   {/* MAP FUNCTION */}
-   {/* {  names.map((nm)=>(
-    <Welcome name={nm}/>
-    ))}
-
-    {name.map((ns)=>(
-      <Message name={ns.name} pic={ns.pic}/>
-    ))} */}
-
-
-   {/* <Counter/>  */}
-
-   {/* <Welcome name="abay"/> */}
-    {/* <div className="movie-List"> 
-    {movieList.map((nm)=>(<Movie movie={nm}/>)
-    )}
-    </div> */}
+  
     
+    <AppBar position="static">
+        <Toolbar>
+          <Button color="inherit" onClick={()=>navigate("/")}>Home</Button>
+          <Button color="inherit"  onClick={()=>navigate("/color-game")}>Color Game</Button>
+          <Button color="inherit" onClick={()=>navigate("/movies")}>Movies</Button>
+        </Toolbar>
+      </AppBar>
 
-    {/* < MovieList movieList={movieList} setMovieList={setMovieList} /> */}
-
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/color-game">Color Game</Link>
-        </li>
-        <li>
-          <Link to="/movies">Movies</Link>
-        </li>
-      </ul>
-    </nav>
+  
     
     {/* <h1>Welcome to React Router!</h1> */}
       <Routes>
@@ -143,18 +111,26 @@ function App() {
         
         <Route path="/color-game" element={<AddColor/>}/>
         
-        <Route path="/movies/:id" 
+        {/* <Route path="/movies/:id" 
         element={<MovieDetails movieList={movieList}/>}
-         />
+         /> */}
         
-        <Route path="/movies" element={
+        <Route path="/movies" 
+        element={
           <MovieList movieList={movieList} setMovieList={setMovieList}/>
         }/>
+
+        {/* <Route path="/" element={
+          <AddMovie movieList={movieList} setMovieList={setMovieList}/>
+        }/> */}
+
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate replace to='/NotFound' />} />
       </Routes>
       
       {/* <MovieList movieList={movieList} setMovieList={setMovieList}/> */}
+
+
     </div>
    
   );
@@ -212,7 +188,8 @@ function MovieDetails({movieList}){
         <p style={Style} className="movie-rating">🌟{movie.rating}</p>
       </div>
       <p className="movie-summary">{movie.summary}</p>
-      <button onClick={()=>navigate(-1)}>Back</button>
+      {/* <button onClick={()=>navigate(-1)}></button> */}
+      <Button onClick={()=>navigate(-1)} variant="outlined">Back</Button>
     </div>
     </div>
   )
@@ -231,43 +208,40 @@ function MovieList({movieList,setMovieList}){
       summary:summary,
      };
      setMovieList([...movieList,newMovie])
-     console.log(newMovie)};
-
+     console.log(newMovie);
   return(
-    <div>
-      <div  className='add-movie-form'>
-        <input  
-        placeholder='Name'
-        onChange={(event)=>setName(event.target.value)}
-        />
-        
-        <input placeholder='Poster' 
-        onChange={(event)=>setPoster(event.target.value)}/>
-        
-        <input placeholder='Rating'
-        onChange={(event)=>setRating(event.target.value)}/>
-        
-        <input placeholder='Summmary'
-        onChange={(event)=>setSummary(event.target.value)}/>
+    <>
+    <div  className='add-movie-form'>
+    <TextField  
+      onChange={(event)=>setName(event.target.value)}
+      label="Rating" variant="standard" />
+     
+    <TextField   
+      onChange={(event)=>setPoster(event.target.value)}
+      label="Rating" variant="standard" />
+
+    <TextField  
+      onChange={(event)=>setRating(event.target.value)}
+      label="Rating" variant="standard" />
+
+    <TextField  
+      onChange={(event)=>setSummary(event.target.value)} 
+      label="Summmary" variant="standard" />
+
 {/* 
-        <p>name:{name}</p>
-        <p>poster:{poster}</p>
-        <p>rating:{rating}</p>
-        <p>summary:{summary}</p> */}
-       
-        <button onClick={addMovie}>
-          Add Movie
-        </button>
-        <Button variant="outlined">Outlined</Button>
-      </div>
+      <p>name:{name}</p>
+      <p>poster:{poster}</p>
+      <p>rating:{rating}</p>
+      <p>summary:{summary}</p> */}
+    
+      <Button onClick={addMovie} variant="outlined">Add Movie</Button>
+    </div>
       <div className="movie-List"> 
         {movieList.map((mv,index)=>
         (<Movie key={index} movie={mv} id={index}/>)
       )}
+       
     </div>
-    </div>
+    </>
   )
 }
-
-
-
