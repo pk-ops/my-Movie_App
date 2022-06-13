@@ -50,10 +50,10 @@ export function Movie({ movie,id }) {
       {/* conditional Rendering */}
      {show ? <p className="movie-summary">{movie.summary}</p> : null}
       </CardContent>
-     
-     {/* <CardActions>
-       <Counters />
-     </CardActions> */}
+      
+     <CardActions>
+     <Counters />
+     </CardActions>
    </Card>
   );
 }
