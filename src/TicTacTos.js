@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import Button from '@mui/material/Button';
 
 export function TicTacTos() {
   return (
@@ -70,9 +71,12 @@ function Reset(){
         <GameBox val={val} onPlayerClick={()=>handleCLick(index)} />
       ))}
       <h1>Winner is: {winner}</h1>
-
-      <button className='reset' onClick={Reset}>Reset</button>
+      <div>
+      
+      <Button className='reset' onClick={Reset} variant="outlined">Reset</Button>
     </div>
+    </div>
+    
   )
 }
 function GameBox({val, onPlayerClick}){

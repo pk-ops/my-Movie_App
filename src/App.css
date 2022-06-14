@@ -84,3 +84,8 @@
   grid-template-columns:repeat(3,1fr) ;
   max-width: 600px;
 }
+.reset{
+  width: 200px;
+  height: 50px;
+  margin-top: 20px;
+}
