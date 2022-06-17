@@ -2,16 +2,20 @@ import * as React from 'react';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
+
 export function TicTacTos() {
   return (
-    <div>
+    <div className='fun-game'>
       <h1>Fun Game</h1>
       <Board/>
     </div>
   );
 }
+
 function Board(){
-  const [board,setBoard]=useState([
+  const InitialBoard=([ null,
     null,
     null,
     null,
@@ -19,11 +23,10 @@ function Board(){
     null,
     null,
     null,
-    null,
-    null,
-  ]);
+    null,]);
+  const [board,setBoard]=useState(InitialBoard);
   const[isXTurn,setisXturn]=useState(true);
-  const decideWinner=(index)=>{
+  const decideWinner=()=>{
     const lines=[
       [0,1,2],
       [3,4,5,],
@@ -54,27 +57,23 @@ function Board(){
   }
 }
 function Reset(){
-  setBoard([null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,]);
+  setBoard(InitialBoard);
+    setisXturn(true)
   
 }
+const { width, height } = useWindowSize()
   return(
+    <div >
     <div className='board'>
+     {winner? <Confetti width={width} height={height}/>:null}
       {board.map((val,index)=>(
-        <GameBox val={val} onPlayerClick={()=>handleCLick(index)} />
+        <GameBox val={val}  onPlayerClick={()=>handleCLick(index)} />
       ))}
-      <h1>Winner is: {winner}</h1>
-      <div>
+      {winner?<h1>Winner is:{winner}</h1>:null}
+      </div>
       
-      <Button className='reset' onClick={Reset} variant="outlined">Reset</Button>
-    </div>
+      <Button className="reset" onClick={Reset} variant="outlined">Restart</Button>
+     
     </div>
     
   )
@@ -86,6 +85,6 @@ function GameBox({val, onPlayerClick}){
     color:val==="X"?"green":"red"
   }
   return(
-    <div style={styles} onClick={onPlayerClick} className='game-box'>{val}</div>
+    <div style={styles}  onClick={onPlayerClick} className='game-box'>{val}</div>
   )
 }

@@ -63,15 +63,15 @@
   padding:16px;
 }
 .game-box{
-  height: 160px;
+  height: 100px;
   /* width: 160px; */
   background: white;
-  font-size: 160px;
+  font-size: 100px;
   color: black;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px  solid black;
   cursor: pointer;
 }
 .game-box:hover{
@@ -81,11 +81,19 @@
   /* background: orange; */
   display: grid ;
   /* grid-template-columns: 1fr 1fr 1fr; */
+ 
   grid-template-columns:repeat(3,1fr) ;
-  max-width: 600px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+
+}
+.fun-game{
+  text-align: center;
 }
 .reset{
-  width: 200px;
+  /* width: 200px; */
   height: 50px;
-  margin-top: 20px;
+  margin-top: 60px;
 }

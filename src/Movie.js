@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {Counters} from "./Counter";
+import {Delete} from "./Delete";
 
 
 
@@ -14,7 +15,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
 
-export function Movie({ movie,id }) {
+export function Movie({ movie,id,deleteButton }) {
   const Style = {
     color: movie.rating > 8 ? "green" : "red"
   };
@@ -53,7 +54,10 @@ export function Movie({ movie,id }) {
       
      <CardActions>
      <Counters />
+     
+     {deleteButton}
      </CardActions>
+
    </Card>
   );
 }
