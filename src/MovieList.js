@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 export function MovieList() {
     const [movieList,setMovieList]=useState([]);;
@@ -20,13 +21,23 @@ export function MovieList() {
               method:'DELETE'
             }).then(()=>getMovies())
       };
+
+const navigate=useNavigate();
   return (
     <div>
 
       <div className="movie-List">
         {movieList.map((mv) =>
          (<Movie key={mv.id} movie={mv} id={mv.id} 
-          deleteButton={<Button variant="outlined" onClick={()=>deleteMovie(mv.id)}>delete</Button>} />)  
+          deleteButton={
+          <Button variant="outlined"
+           onClick={()=>
+            deleteMovie(mv.id)}>delete</Button>
+           }
+           editButton={<Button variant="outlined"
+           onClick={()=>navigate(`/movies/edit/${mv.id}`)}>Edit</Button>} />
+           ) 
+            
         )}
       
       </div>

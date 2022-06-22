@@ -24,10 +24,13 @@ import Paper from '@mui/material/Paper';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { TicTacTos } from './TicTacTos';
+import { EditMovie } from './EditMovie';
+import { BasicForm } from './BasicForm';
+
 
 function App() {
 
-  const names = ["Mayur", "Prathamesh", "Aniket"]
+  // const names = ["Mayur", "Prathamesh", "Aniket"]
   const INITIAL_MOVIE_LIST = [
     {
       id:'100',
@@ -138,18 +141,19 @@ function App() {
 
               <Route path="/color-game" element={<AddColor />} />
 
-              <Route path="/movies/:id"
-                element={<MovieDetails />}
-              />
+              <Route path="/movies/:id" element={<MovieDetails />}/>
 
-              <Route path="/movies"
-                element={
-                  <MovieList  />
-                } />
+              <Route path="/movies" element={ <MovieList  />} />
+              <Route path="/basic-form" element={<BasicForm  />} />
 
-              <Route path="/movies/add"
-                element={<AddMovie movieList={movieList} setMovieList={setMovieList} />} />
+              <Route path="/movies/add" element={<AddMovie  />} />
+{/*               
+              <Route path="/movies/edit/:id" element={<EditMovie />} /> */}
+             
+             
+             <Route path="/movies/edit/:id" element={<EditMovie />}/>
 
+            
               <Route path="/404" element={<NotFound />} />
               <Route path="*" element={<Navigate replace to='/NotFound' />} />
 
