@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import { useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as yup from "yup";
+import { API } from "./global";
 
 const movieValidationSchema=yup.object({
   name: yup.string().required(),
@@ -43,7 +44,7 @@ export function AddMovie() {
     //2.Body--passing data & type should be JSON
     //3.Headers---Json(we are passing data)
     
-    fetch(`https://62a97087ec36bf40bdb787e6.mockapi.io/movies`, 
+    fetch(`${API}/movies`, 
     {method: "POST",
     body: JSON.stringify(newMovie),
     headers: {"Content-Type": "application/json",
@@ -74,8 +75,10 @@ export function AddMovie() {
         value={values.name}
         onChange={handleChange}
         onBlur={handleBlur}
-          />
-    {touched.name && errors.name?errors.name:" "}
+        error={touched.name && errors.name}
+        helperText={touched.name && errors.name?errors.name:" "}
+        />
+    
         <TextField
           label="Poster" 
           variant="standard"
@@ -83,8 +86,10 @@ export function AddMovie() {
           value={values.poster}
           onChange={handleChange}
           onBlur={handleBlur}
+          error={touched.poster && errors.poster}
+          helperText={touched.poster && errors.poster?errors.poster:" "}
            />
-{touched.poster && errors.poster?errors.poster:" "}
+
         <TextField
           label="Rating" 
           variant="standard"
@@ -92,8 +97,10 @@ export function AddMovie() {
           value={values.rating}
           onChange={handleChange}
           onBlur={handleBlur}
+          error={touched.rating && errors.rating}
+        helperText={touched.rating && errors.rating?errors.rating:" "}
            />
-{touched.rating && errors.rating?errors.rating:" "}
+
         <TextField
           label="Summmary" 
           variant="standard"
@@ -101,8 +108,10 @@ export function AddMovie() {
           value={values.summary}
           onChange={handleChange}
           onBlur={handleBlur}
+          error={touched.summary && errors.summary}
+        helperText={touched.summary && errors.summary?errors.summary:" "}
            />
-{touched.summary && errors.summary?errors.summary:" "}
+
         <TextField
           label="Trailer" 
           variant="standard" 
@@ -110,8 +119,10 @@ export function AddMovie() {
           value={values.trailer}
           onChange={handleChange}
           onBlur={handleBlur}
+          error={touched.trailer && errors.trailer}
+        helperText={touched.trailer && errors.trailer?errors.trailer:" "}
            />
-{touched.trailer && errors.trailer?errors.trailer:" "}
+
        
        
      <Button type="submit" variant="outlined">Add Movie</Button>

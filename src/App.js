@@ -123,7 +123,9 @@ function App() {
                 {/* <Button color="inherit"
                 onClick={() => navigate("/TicTacTos")}>Tic-Tac-Tos</Button> */}
 
-              <Button className='button-top' color="inherit"
+              <Button className='button-top'
+              style={{marginLeft:"auto"}}
+              color="inherit"
                 startIcon={
                   mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />
                 }
