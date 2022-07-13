@@ -35,13 +35,13 @@ const navigate=useNavigate();
        
         {
           movieList.map((mv) =>
-         (<Movie key={mv.id} movie={mv} id={mv.id} 
+         (<Movie key={mv._id} movie={mv} id={mv._id} 
           
             deleteButton= {
               <IconButton
               style={{marginLeft:"auto"}}
                 color="error"
-                onClick={()=>deleteMovie(mv.id)}
+                onClick={()=>deleteMovie(mv._id)}
                 aria-label="Movie-details">
                 <DeleteIcon/>
              </IconButton>
@@ -52,7 +52,7 @@ const navigate=useNavigate();
            
                 color="primary"
                 onClick={()=>
-                navigate(`/movies/edit/${mv.id}`)}
+                navigate(`/movies/edit/${mv._id}`)}
                 aria-label="Movie-details">
                 <EditIcon/>
              </IconButton>
