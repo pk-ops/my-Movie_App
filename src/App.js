@@ -137,7 +137,7 @@ function App() {
           {/* <h1>Welcome to React Router!</h1> */}
           <section className='route-container'>
             <Routes>
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="about" element={<About />} />
               <Route path="/films" element={<Navigate replace to="/movies" />} />
 
