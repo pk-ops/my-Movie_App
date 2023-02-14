@@ -114,14 +114,14 @@ function App() {
         <div className="App">
           <AppBar position="static">
             <Toolbar>
-              <Button color="inherit" onClick={() => navigate("/")}>Home</Button>
-              <Button color="inherit" onClick={() => navigate("/color-game")}>Color Game</Button>
+              <Button color="inherit" onClick={() => navigate("/home")}>Home</Button>
+              {/* <Button color="inherit" onClick={() => navigate("/color-game")}>Color Game</Button> */}
               <Button color="inherit" onClick={() => navigate("/movies")}>Movies</Button>
               <Button color="inherit" onClick={() => navigate("/movies/add")}>Add Movie</Button>
-              <Button color="inherit"
+              {/* <Button color="inherit"
                 onClick={() => navigate("/TicTacTos")}>Tic-Tac-Tos</Button>
                 {/* <Button color="inherit"
-                onClick={() => navigate("/TicTacTos")}>Tic-Tac-Tos</Button> */}
+                onClick={() => navigate("/TicTacTos")}>Tic-Tac-Tos</Button> */} 
 
               <Button className='button-top'
               style={{marginLeft:"auto"}}
@@ -137,11 +137,11 @@ function App() {
           {/* <h1>Welcome to React Router!</h1> */}
           <section className='route-container'>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
               <Route path="about" element={<About />} />
               <Route path="/films" element={<Navigate replace to="/movies" />} />
 
-              <Route path="/color-game" element={<AddColor />} />
+              {/* <Route path="/color-game" element={<AddColor />} /> */}
 
               <Route path="/movies/:id" element={<MovieDetails />}/>
 
@@ -159,7 +159,7 @@ function App() {
               <Route path="/404" element={<NotFound />} />
               <Route path="*" element={<Navigate replace to='/NotFound' />} />
 
-              <Route path="/TicTacTos" element={<TicTacTos />} />
+              {/* <Route path="/TicTacTos" element={<TicTacTos />} /> */}
 
             </Routes>
 
