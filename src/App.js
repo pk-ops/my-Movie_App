@@ -26,6 +26,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { TicTacTos } from './TicTacTos';
 import { EditMovie } from './EditMovie';
 import { BasicForm } from './BasicForm';
+import Signup from './signup';
 
 
 function App() {
@@ -108,6 +109,13 @@ function App() {
     },
   });
 
+  const Style={
+    background:mode==="dark"?"black":"blue",
+    color:mode==="dark"?"blue":"white"
+  }
+
+  
+
   return (
     <ThemeProvider theme={Theme}>
       <Paper elevation={4} style={{ minHeight: "100vh", borderRadius: "0px" }} >
@@ -132,6 +140,10 @@ function App() {
                 onClick={() => setMode(mode === "light" ? 'dark' : 'light')}>
                 {mode === "light" ? "dark" : "light"}mode</Button>
 
+                {/* Sigup and Login Button */}
+
+                <Button style={Style} onClick={()=>navigate("/signup")}>signup</Button>
+
             </Toolbar>
           </AppBar>
           {/* <h1>Welcome to React Router!</h1> */}
@@ -151,7 +163,7 @@ function App() {
               <Route path="/movies/add" element={<AddMovie  />} />
 {/*               
               <Route path="/movies/edit/:id" element={<EditMovie />} /> */}
-             
+              
              
              <Route path="/movies/edit/:id" element={<EditMovie />}/>
 
@@ -160,6 +172,10 @@ function App() {
               <Route path="*" element={<Navigate replace to='/NotFound' />} />
 
               {/* <Route path="/TicTacTos" element={<TicTacTos />} /> */}
+
+
+              <Route path="/signup" element={ <Signup/>} />
+
 
             </Routes>
 
