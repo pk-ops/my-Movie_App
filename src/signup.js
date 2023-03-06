@@ -1,8 +1,13 @@
 
 import React, { useState } from "react";
+import {  useNavigate } from "react-router-dom";
 import "./App.css";
 import { API } from "./global";
 function Signup(props) {
+
+const navigate=useNavigate();
+
+
 const [mode,setMode]=useState("dark")
    const Style= {
     color: mode==='dark'?'black':'white',
@@ -21,27 +26,35 @@ const [mode,setMode]=useState("dark")
 
    const registerSubmit=(e)=>{
         e.preventDefault();
-
+       try{
         const data={
             username:registerInput.username,
             email:registerInput.email,
             password:registerInput.password
         }
         // console.log(data)
-        fetch(`${API}/users/signup`,{
-            method:'POST',
-            crossDomain:true,
-            headers:{
-                "Content-Type":"application/json",
-            },
-            body: JSON.stringify(data),
-        }).then((res)=>{
-            if(res.status=='200'){
-                alert("registration Completed")
-            }
-        })
+        
+            fetch(`${API}/users/signup`,{
+                method:'POST',
+                crossDomain:true,
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify(data),
+            }).then((res)=>{
+                if(res.status=='200'){
+                    alert("registration Completed")
+                    navigate('/login')
+                  
+                }
+            })
+        }catch(err){
+            alert("Message",err)
+        }
+      
         // .then((dda)=>{ alert("Registration Successful")
         // })
+      
 
    }
 
@@ -49,11 +62,12 @@ const [mode,setMode]=useState("dark")
 
         <div className="auth">
             <div className="auth-container">
-                <div className="sign-up">
+                <div className="sign-up body">
                    
                     <div className="sign-container form">
                     <h1 style={Style}>User's Registration</h1>
                         <form onSubmit={registerSubmit}>
+                       
                         <div className="input-field">
                             <p style={Style}>UserName</p>
                             <input 
@@ -61,6 +75,9 @@ const [mode,setMode]=useState("dark")
                                 type="text"
                                 onChange={handleInput}
                                 value={registerInput.username}
+                                placeholder="Enter username"
+
+                                style={{padding:"3px"}}
                                
                             />
                         </div>
@@ -73,6 +90,8 @@ const [mode,setMode]=useState("dark")
                                 type="text"
                                 onChange={handleInput}
                                 value={registerInput.email} 
+                                placeholder="Enter email address"
+                                style={{padding:"3px"}}
                             />
                         </div>
 
@@ -83,6 +102,8 @@ const [mode,setMode]=useState("dark")
                                 type="password"
                                 onChange={handleInput}
                                 value={registerInput.password} 
+                                placeholder="Enter password"
+                                style={{padding:"3px"}}
                                 
                             />
                         </div>
@@ -102,6 +123,11 @@ const [mode,setMode]=useState("dark")
                      
                        
                     </div>
+                </div>
+
+                <div className="auth footer" style={Style}>
+                    <p>Already have an account? <a href="/login"> Log in</a></p>
+                 
                 </div>
             </div>
 

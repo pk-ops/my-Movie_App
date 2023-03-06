@@ -9,15 +9,32 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { API } from './global';
+import CommonContext from './context/commonContext';
+import { useContext } from 'react';
 
 export function MovieList() {
-    const [movieList,setMovieList]=useState([]);;
-   
+    const [movieList,setMovieList]=useState([]);
+    const {isLoggedIn}=useContext(CommonContext); 
 
     const getMovies=()=>{
-      fetch(`${API}/movies`)
-      .then((data)=>data.json())
-      .then((mvs)=>setMovieList(mvs));
+      if(!isLoggedIn){
+      navigate("/login");
+      }
+      else{
+        try{
+          fetch(`${API}/movies`,{
+            headers:{ "x-auth-token" : localStorage.getItem('x-auth-token')}
+          })
+        .then((data)=>data.json())
+        .then((mvs)=>setMovieList(mvs));
+        // 
+  
+        }catch(err){
+          console.error(err)
+        }
+      }
+    
+      
     };
     useEffect(()=>getMovies(),[]);
 

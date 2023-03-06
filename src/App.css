@@ -101,7 +101,7 @@
 .auth{
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  /* height: 76vh; */
   padding:30px 0px;
   background-color: aliceblue;
 }
@@ -127,13 +127,63 @@
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
   0 6px 20px 0 rgba(66,42,42,0.19);
-  border-radius: 3px;
+  border-radius: 13px;
 }
 
 .signup_button{
   margin-top: "20px";
   width:"100px";
   background-color:"blue";
+  border: 1px solid blue;
+  padding: 2px;
+  border-radius: 2rem;
+}
+
+
+/* Login */
+.auth__login{
+  display: flex;
+  flex-direction: column;
+  height: 76vh;
+  padding:30px 0px;
+  background-color: aliceblue;
+}
+
+.auth-container__login{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.login{
+  display: flex;
+  margin: 30px 0;
+  width: 300px;
+} 
+.login-container{
+  width: 100%;
+  display: flex;
+  flex-direction:column;
+  padding:20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+  0 6px 20px 0 rgba(66,42,42,0.19);
+  border-radius: 10px;
+  margin: 20px 0px;
+  padding: 40px 20px;
+}
+
+/* .login__body{
+  height: 50vh;
+} */
+
+/* .input-fields__login>p{
+  margin: 0;
+} */
+.login_button{
   border: 1px solid blue;
   padding: 2px;
   border-radius: 2rem;
