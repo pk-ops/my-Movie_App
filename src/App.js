@@ -162,7 +162,7 @@ function App() {
 
                
                      {/* Sigup and Login Button */}
-                {isLoggedIn==true? <Button onClick={clearFun}>Logout</Button>:
+                {isLoggedIn==true? <Button style={Style} onClick={clearFun}>Logout</Button>:
                   <Button style={Style}  onClick={()=>navigate("/login")}>login</Button>}
 
                 {isLoggedIn==true?<Button style={Style}>{localStorage.getItem("username")}</Button>:
