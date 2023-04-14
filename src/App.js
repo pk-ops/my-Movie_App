@@ -119,7 +119,7 @@ function App() {
 
   const [isLoggedIn, SetIsLoggedIn] = useState(localStorage.getItem("token"));
 
-  const clearFun=()=>{
+  const clearFun=()=>{   
         if(isLoggedIn){
           localStorage.removeItem("x-auth-token")
           localStorage.removeItem("id")

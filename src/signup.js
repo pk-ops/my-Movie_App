@@ -34,7 +34,7 @@ const [mode,setMode]=useState("dark")
         }
         // console.log(data)
         
-            fetch(`${API}/users/signup`,{
+            fetch(`${API}/users/`,{
                 method:'POST',
                 crossDomain:true,
                 headers:{
